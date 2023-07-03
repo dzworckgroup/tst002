@@ -1,0 +1,69 @@
+{
+	"name": "aimeos/aimeos-typo3",
+	"description": "Professional, full-featured and high performance TYPO3 e-commerce extension for online shops and complex B2B projects",
+	"keywords": ["aimeos", "TYPO3", "e-commerce", "ecommerce", "B2B", "shop", "portal", "market place"],
+	"homepage": "https://www.aimeos.org",
+	"type": "typo3-cms-extension",
+	"license": "LGPL-3.0-or-later",
+	"support": {
+		"source": "https://github.com/aimeos/aimeos-typo3",
+		"issues": "https://github.com/aimeos/aimeos-typo3/issues",
+		"forum": "https://aimeos.org/help",
+		"wiki": "https://aimeos.org/docs"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"php": ">=7.2.0",
+		"composer-runtime-api": "^2.1",
+		"doctrine/dbal": "~2.5",
+		"typo3/cms-core": "~9.5||~10.4",
+		"typo3/cms-backend": "~9.5||~10.4",
+		"typo3/cms-extbase": "~9.5||~10.4",
+		"typo3/cms-scheduler": "~9.5||~10.4",
+		"aimeos/aimeos-core": "dev-master",
+		"aimeos/ai-gettext": "dev-master",
+		"aimeos/ai-typo3": "dev-master",
+		"aimeos/ai-admin-jqadm": "dev-master",
+		"aimeos/ai-admin-jsonadm": "dev-master",
+		"aimeos/ai-client-jsonapi": "dev-master",
+		"aimeos/ai-client-html": "dev-master",
+		"bithost-gmbh/pdfviewhelpers": "^2.3.4",
+		"sjbr/static-info-tables": "^6.5",
+		"nyholm/psr7-server": "^1.0",
+		"nyholm/psr7": "^1.2"
+	},
+	"replace": {
+		"aimeos/aimeos-typo3": "self.version",
+		"typo3-ter/aimeos": "self.version"
+	},
+	"autoload": {
+		"classmap": ["Classes"],
+		"psr-4": {
+			"Aimeos\\Aimeos\\": "Classes"
+		}
+	},
+	"repositories": {
+		"sjbr/static-info-tables": {
+			"type": "vcs",
+			"url": "https://codeberg.org/sjbr/static-info-tables.git"
+		}
+	},
+	"config": {
+		"secure-http": false,
+		"vendor-dir": "Resources/Libraries"
+	},
+	"extra": {
+		"installer-paths": {
+			"Resources/Private/Extensions/{$name}/": ["type:aimeos-extension"]
+		},
+		"typo3/cms": {
+			"extension-key": "aimeos"
+		}
+	},
+	"scripts": {
+		"post-update-cmd": [
+			"cp -r Resources/Private/Extensions/ai-client-html/client/html/themes/* Resources/Public/Themes/"
+		]
+	}
+}

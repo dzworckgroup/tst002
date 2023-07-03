@@ -1,0 +1,7 @@
+Resources/Private/Extensions
+Resources/Libraries
+composer.lock
+index.php
+typo3_src
+typo3conf
+typo3
